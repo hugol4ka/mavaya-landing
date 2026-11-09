@@ -1040,6 +1040,11 @@ img.avatar {
   line-height: 1.4;
 }
 
+.private-note {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
 .project-text .button {
   margin-top: 0.5rem;
 }
