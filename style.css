@@ -1,0 +1,1472 @@
+/* Couleurs et polices de la charte Mavaya, les mêmes que sur la plateforme. */
+:root {
+  --deepnight: #1c1b2e;
+  --magenta: #d10068;
+  --magenta-dark: #a80054;
+  /* Le magenta éclairci, pour le texte sur bleu nuit. */
+  --magenta-bright: #ff4fa0;
+  --bougainvillea: #7b2d8b;
+  --turquoise: #00d1ae;
+  --gold: #f5b800;
+  --blush-light: #fbeff1;
+  /* Le rose du fond de la photo de couverture, pour que photo et texte se fondent. */
+  --hero-pink: #e1a0ad;
+  --white: #ffffff;
+  /* Le rose poudré de la charte, plein : le pied de page, comme sur la plateforme. */
+  --blush: #e8b0ba;
+  --muted: #55546b;
+  --line: #ececf2;
+  --font-heading: "Outfit", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --radius: 24px;
+  --shadow: 0 18px 50px rgba(28, 27, 46, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Le haut de chaque section reste visible sous l'en-tête collant. */
+  scroll-padding-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  /* Le fond secondaire de la charte (rose poudré très clair) sur toute la page, comme les
+     pages de l'application ; les cartes blanches se posent dessus. */
+  background: var(--blush-light);
+  color: var(--deepnight);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.12;
+  margin: 0 0 0.75rem;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--bougainvillea);
+}
+
+:focus-visible {
+  outline: 3px solid var(--magenta);
+  outline-offset: 3px;
+}
+
+.container {
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.container-narrow {
+  max-width: 60rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 20;
+  padding: 0.75rem 1rem;
+  background: var(--deepnight);
+  color: var(--white);
+  border-radius: 8px;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.icon {
+  width: 1.1em;
+  height: 1.1em;
+  fill: currentColor;
+  flex: none;
+}
+
+/* Petit titre au-dessus des grands : il dit de quoi parle la section. */
+.eyebrow {
+  margin-bottom: 0.75rem;
+  color: var(--magenta-dark);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.eyebrow-light {
+  color: #ff7ab8;
+}
+
+/* Boutons : 44 px de haut au moins, pour le doigt comme pour la souris. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.75rem 1.75rem;
+  border: 2px solid var(--magenta);
+  border-radius: 999px;
+  background: var(--magenta);
+  color: var(--white);
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.button:hover {
+  background: var(--magenta-dark);
+  border-color: var(--magenta-dark);
+  transform: translateY(-1px);
+}
+
+.button-small {
+  min-height: 44px;
+  padding: 0.5rem 1.25rem;
+}
+
+.button-outline {
+  background: transparent;
+  color: var(--magenta-dark);
+  border-color: var(--magenta-dark);
+}
+
+.button-outline:hover {
+  background: var(--magenta-dark);
+  color: var(--white);
+}
+
+/* Bouton secondaire de l'introduction : contour bleu nuit (blanc en mode sombre). */
+.button-ghost {
+  background: transparent;
+  border-color: var(--deepnight);
+  color: var(--deepnight);
+}
+
+.button-ghost:hover {
+  background: var(--deepnight);
+  border-color: var(--deepnight);
+  color: var(--white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .video-play {
+    transition: none;
+  }
+
+  .button:hover {
+    transform: none;
+  }
+}
+
+/* En-tête */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* Une cible de 44 px au moins, comme les boutons. */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.logo img {
+  height: 38px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 0.5rem 0;
+  color: var(--deepnight);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: var(--magenta-dark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Introduction : texte à gauche, photo à droite avec les formes de la charte, sur le
+   fond rose poudré de la page. En mode sombre, elle prend les reflets de la vidéo. */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 4rem;
+  align-items: center;
+  padding-top: 5rem;
+  padding-bottom: 5.5rem;
+}
+
+.hero-text {
+  max-width: 34rem;
+}
+
+.hero .eyebrow {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--deepnight);
+  letter-spacing: 0.04em;
+}
+
+.hero h1 {
+  font-size: clamp(3.25rem, 7vw, 5.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--magenta);
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.375rem, 2.6vw, 1.875rem);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* Comme sur l'accueil de la plateforme : les mots qui disent à qui elle s'adresse, en magenta. */
+.tagline-accent {
+  color: var(--magenta);
+}
+
+.hero-description {
+  margin-bottom: 1.25rem;
+  color: var(--muted);
+}
+
+.promises {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.promises li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.9rem 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: var(--white);
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+/* Une coche devant chaque promesse. */
+.promises li::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.85rem;
+  margin: -0.2rem 0.15rem 0 0.1rem;
+  border: solid var(--magenta);
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.hero-visual {
+  position: relative;
+  justify-self: center;
+  width: 100%;
+  max-width: 28rem;
+}
+
+/* Comme la photo de l'accueil de la plateforme (HeroPhoto) : coins arrondis, liseré blanc. */
+.hero-visual img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  /* En portrait, cadré sur les visages, qui sont à gauche de la photo. */
+  object-position: 22% center;
+  border: 4px solid var(--white);
+  border-radius: 24px;
+  box-shadow: 0 1px 3px rgba(28, 27, 46, 0.1);
+}
+
+/* Les formes de la charte, posées derrière les photos. */
+.shape {
+  position: absolute;
+  pointer-events: none;
+}
+
+.hero-round {
+  top: -2rem;
+  left: -3rem;
+  width: 9rem;
+  height: 9.6rem;
+  color: var(--magenta);
+}
+
+.hero-bean {
+  right: -3rem;
+  bottom: -2.5rem;
+  width: 11rem;
+  height: 11.6rem;
+  color: var(--turquoise);
+  transform: rotate(-12deg);
+}
+
+.hero-dot {
+  bottom: 4rem;
+  left: -2rem;
+  width: 2.5rem;
+  height: 2.7rem;
+  color: var(--gold);
+}
+
+/* Sur téléphone et tablette, la photo passe sous le texte. */
+@media (max-width: 860px) {
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3.5rem;
+    padding-top: 3rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .hero-text {
+    max-width: none;
+  }
+
+  .hero-visual {
+    max-width: 20rem;
+  }
+
+  .hero-round {
+    left: -1.5rem;
+    width: 6rem;
+    height: 6.4rem;
+  }
+
+  .hero-bean {
+    right: -1.5rem;
+    width: 7rem;
+    height: 7.4rem;
+  }
+
+  .hero-dot {
+    left: -0.9rem;
+  }
+}
+
+/* Les principes : trois cartes juste sous l'introduction. */
+.principles-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0 auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  list-style: none;
+}
+
+.principles-list li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--white);
+  box-shadow: 0 8px 30px rgba(28, 27, 46, 0.06);
+}
+
+.principles h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+}
+
+.principles p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9875rem;
+}
+
+.principle-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 14px;
+  background: var(--blush-light);
+}
+
+.principle-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: var(--magenta-dark);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Une couleur de la charte par carte et par étape : magenta, turquoise, jaune.
+   Le texte et les pictos restent lisibles : blanc sur magenta, bleu nuit sur les deux autres. */
+.principles-list li {
+  border-top-width: 4px;
+}
+
+.principles-list li.accent-magenta {
+  border-top-color: var(--magenta);
+}
+
+.principles-list li.accent-turquoise {
+  border-top-color: var(--turquoise);
+}
+
+.principles-list li.accent-gold {
+  border-top-color: var(--gold);
+}
+
+.accent-magenta .principle-icon {
+  background: var(--magenta);
+}
+
+.accent-magenta .principle-icon svg {
+  stroke: var(--white);
+}
+
+.accent-turquoise .principle-icon {
+  background: var(--turquoise);
+}
+
+.accent-gold .principle-icon {
+  background: var(--gold);
+}
+
+.accent-turquoise .principle-icon svg,
+.accent-gold .principle-icon svg {
+  stroke: var(--deepnight);
+}
+
+.feature-step.accent-magenta {
+  background: var(--magenta);
+  color: var(--white);
+}
+
+.feature-step.accent-turquoise {
+  background: var(--turquoise);
+  color: var(--deepnight);
+}
+
+.feature-step.accent-gold {
+  background: var(--gold);
+  color: var(--deepnight);
+}
+
+@media (max-width: 860px) {
+  .principles-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Les vagues : chaque section coule dans la suivante, comme la page de la plateforme
+   coule dans son pied de page. Couleur = celle de la section qui suit. */
+.wave {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 3.5rem;
+  pointer-events: none;
+}
+
+/* Un seul fond rose poudré : les vagues entre sections ne servent plus. Reste celle qui
+   mène au pied de page, d'un rose plus soutenu. */
+.wave-white,
+.wave-blush-light {
+  display: none;
+}
+
+.wave-blush {
+  fill: var(--blush);
+}
+
+/* Sections */
+.section {
+  position: relative;
+  padding: 6rem 0;
+}
+
+/* Une section qui finit par une vague garde de la place pour elle. */
+.section:has(> .wave) {
+  padding-bottom: 8rem;
+}
+
+.hero:has(> .wave) {
+  padding-bottom: 2.5rem;
+}
+
+.section-tinted {
+  background: var(--blush-light);
+}
+
+.section-header {
+  max-width: 44rem;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+.section-header h2 {
+  margin-bottom: 1rem;
+}
+
+.section-lead {
+  margin: 0;
+  color: #d9d8e6;
+  font-size: 1.125rem;
+}
+
+.section-lead-dark {
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* Fonctionnalités : chaque capture dans un cadre de navigateur. */
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 6rem;
+}
+
+.feature:last-child {
+  margin-bottom: 0;
+}
+
+.feature-reverse {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+}
+
+.feature-reverse .browser {
+  order: 2;
+}
+
+.browser {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.browser-bar {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+  background: #f7f6fa;
+}
+
+.browser-bar span {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: #dcdbe6;
+}
+
+/* Taille du cadre fixée même si l'image manque ou tarde à charger. */
+.browser img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: top center;
+  background: var(--blush-light);
+}
+
+.feature-step {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.25rem 0.85rem;
+  border-radius: 999px;
+  background: var(--blush-light);
+  color: var(--magenta-dark);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.feature-text h3 {
+  font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+  margin-bottom: 1rem;
+}
+
+.feature-text p:not(.feature-step) {
+  color: var(--muted);
+}
+
+@media (max-width: 860px) {
+  .feature,
+  .feature-reverse {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+    margin-bottom: 4rem;
+  }
+
+  .feature-reverse .browser {
+    order: 0;
+  }
+}
+
+/* Démo vidéo : un panneau bleu nuit aux coins arrondis, posé sur la page claire. */
+.demo-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 4.5rem 3rem;
+  border-radius: 40px;
+  color: var(--white);
+  background:
+    radial-gradient(
+      circle at 12% 15%,
+      rgba(123, 45, 139, 0.55),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 88% 90%,
+      rgba(209, 0, 104, 0.35),
+      transparent 45%
+    ),
+    var(--deepnight);
+}
+
+.demo-panel .section-header,
+.demo-panel .video {
+  max-width: 54rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.demo-panel .section-header {
+  margin-bottom: 3rem;
+}
+
+.demo-panel :focus-visible {
+  outline-color: var(--white);
+}
+
+@media (max-width: 760px) {
+  .demo-panel {
+    padding: 3rem 1.25rem;
+    border-radius: 28px;
+  }
+}
+
+.video,
+.video-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.video {
+  position: relative;
+}
+
+.video img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Bouton lecture : un rond magenta avec un triangle blanc. */
+.video-play {
+  position: absolute;
+  /* Sous le slogan de l'image d'ouverture, pour ne pas le cacher. */
+  top: 78%;
+  left: 50%;
+  width: 5.5rem;
+  height: 5.5rem;
+  margin: -2.75rem 0 0 -2.75rem;
+  border-radius: 50%;
+  background: var(--magenta);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s ease;
+}
+
+.video-play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 1rem 0 1rem 1.6rem;
+  border-color: transparent transparent transparent var(--white);
+}
+
+.video:hover .video-play,
+.video:focus-visible .video-play {
+  transform: scale(1.08);
+}
+
+/* Les chiffres de l'INSEE, au-dessus des histoires. */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0 0 1rem;
+}
+
+.stat {
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius);
+  background: var(--white);
+  text-align: center;
+}
+
+.stat-number {
+  margin: 0 0 0.5rem;
+  color: var(--magenta);
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.05;
+  /* Des chiffres de même largeur : le nombre ne tremble pas pendant qu'il défile. */
+  font-variant-numeric: tabular-nums;
+}
+
+/* « + de 3,2 M » est plus long que les pourcentages : un cran plus petit, sur une ligne. */
+.stat-number-long {
+  font-size: clamp(1.875rem, 3.2vw, 2.5rem);
+  white-space: nowrap;
+}
+
+.stat-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.stats-source {
+  margin: 0 0 4rem;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+@media (max-width: 960px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* À propos : les deux histoires, puis le projet. */
+.stories {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 0 0 4rem;
+}
+
+.story {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 2rem;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.story blockquote {
+  position: relative;
+  margin: 0;
+  padding-top: 2.25rem;
+}
+
+/* Un grand guillemet décoratif en tête de chaque histoire. */
+.story blockquote::before {
+  content: "“";
+  position: absolute;
+  top: -1.25rem;
+  left: -0.2rem;
+  color: var(--magenta);
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  line-height: 1;
+}
+
+.story blockquote p {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.story figcaption {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.story figcaption strong {
+  color: var(--deepnight);
+}
+
+/* Photo de profil (GitHub) dans la forme irrégulière de la plateforme (ShapedPhoto),
+   rappel des haricots de la charte, avec un liseré blanc. */
+img.avatar {
+  object-fit: cover;
+  border: 3px solid var(--white);
+  border-radius: 58% 42% 50% 50% / 50% 55% 45% 50%;
+}
+
+.member-photo {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+
+.member-photo .avatar {
+  position: relative;
+  margin: 0;
+}
+
+/* Un rond turquoise derrière la photo, comme sur Mon espace. */
+.member-shape {
+  bottom: -0.6rem;
+  left: -0.8rem;
+  width: 100%;
+  height: 100%;
+  color: var(--turquoise);
+  transform: rotate(12deg);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--magenta);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.avatar-large {
+  width: 8rem;
+  height: 8rem;
+  font-size: 1.5rem;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 3rem;
+  /* La photo s'étire sur toute la hauteur du texte. */
+  align-items: stretch;
+}
+
+.project-visual {
+  position: relative;
+}
+
+/* Comme la section « À propos » de la plateforme : liseré blanc, haricot jaune, point turquoise. */
+.project-photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 55% center;
+  border: 4px solid var(--white);
+  border-radius: 24px;
+  box-shadow: 0 1px 3px rgba(28, 27, 46, 0.1);
+}
+
+.project-bean {
+  bottom: -2.5rem;
+  left: -2.5rem;
+  width: 10rem;
+  height: 10.6rem;
+  color: var(--gold);
+  transform: rotate(-12deg);
+}
+
+.project-dot {
+  top: -1.25rem;
+  right: -1.25rem;
+  width: 3rem;
+  height: 3.2rem;
+  color: var(--turquoise);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.facts div {
+  padding: 1rem;
+  border-radius: 16px;
+  background: var(--white);
+}
+
+.facts dt {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--magenta-dark);
+}
+
+.facts dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.project-text .button {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 860px) {
+  .stories,
+  .project {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project {
+    gap: 2rem;
+  }
+
+  .project-photo {
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+}
+
+@media (max-width: 520px) {
+  .facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Équipe */
+.team {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1.5rem;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.member {
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.member .avatar {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.member-role {
+  color: var(--muted);
+}
+
+.member-role strong {
+  color: var(--deepnight);
+}
+
+.team-shared {
+  max-width: 40rem;
+  margin: 2rem auto 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.member-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  /* Poussés en bas de la carte : les deux cartes alignent leurs boutons. */
+  margin: auto 0 0;
+  padding: 1.5rem 0 0;
+  list-style: none;
+}
+
+.member-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--deepnight);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.member-links a:hover {
+  border-color: var(--magenta-dark);
+  color: var(--magenta-dark);
+}
+
+/* Pied de page : rose poudré, comme celui de la plateforme. */
+.site-footer {
+  padding: 2.5rem 0 3rem;
+  background: var(--blush);
+  color: var(--deepnight);
+  font-size: 0.9375rem;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.footer-inner p {
+  margin: 0.25rem 0;
+}
+
+.footer-logo {
+  height: 36px;
+  width: auto;
+  margin-bottom: 0.75rem;
+}
+
+.footer-note {
+  color: #4a3a45;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-links a {
+  /* 44 px de haut : une cible confortable au doigt. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--deepnight);
+  font-weight: 700;
+  text-underline-offset: 4px;
+}
+
+/* Le magenta foncé manque de contraste sur le rose poudré : le survol épaissit le
+   soulignement au lieu de changer la couleur. */
+.footer-links a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Sur téléphone, le bouton lecture rapetisse et passe dans le coin en bas à droite :
+   au centre, il couvrait le slogan de l'image d'ouverture. */
+@media (max-width: 600px) {
+  .video-play {
+    top: auto;
+    left: auto;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0;
+  }
+
+  .video-play::after {
+    border-width: 0.65rem 0 0.65rem 1rem;
+  }
+}
+
+/* Sur téléphone, l'en-tête ne reste pas collé en haut : sur plusieurs lignes, il cacherait
+   une bonne part de l'écran et l'élément qui a le focus (WCAG 2.4.11). */
+@media (max-width: 760px) {
+  .site-header {
+    position: static;
+  }
+
+  html {
+    scroll-padding-top: 1rem;
+  }
+}
+
+/* --- L'interrupteur clair / sombre --- */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--deepnight);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: var(--magenta-dark);
+}
+
+.theme-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* La lune propose le mode sombre ; le soleil, le retour au clair. */
+.theme-icon-sun,
+[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+
+/* --- Le mode sombre : tout le site sur le bleu nuit de la charte, avec les reflets de
+   lumière de la vidéo. Un aperçu de ce que pourrait être le mode sombre de l'application. --- */
+
+[data-theme="dark"] {
+  --muted: #c7c6d9;
+  --line: rgba(255, 255, 255, 0.14);
+  --card: rgba(255, 255, 255, 0.06);
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  color: var(--white);
+  background: var(--deepnight);
+}
+
+/* Les reflets : trois halos fixes derrière tout le contenu. */
+[data-theme="dark"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(123, 45, 139, 0.55),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 40%,
+      rgba(209, 0, 104, 0.32),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 20% 90%,
+      rgba(0, 209, 174, 0.14),
+      transparent 35%
+    ),
+    var(--deepnight);
+}
+
+/* Les liens dans le texte ; les boutons gardent leurs propres couleurs. */
+[data-theme="dark"] a:not(.button) {
+  color: #ff8fc4;
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(28, 27, 46, 0.8);
+  border-bottom-color: var(--line);
+}
+
+[data-theme="dark"] .nav-links a,
+[data-theme="dark"] .theme-toggle {
+  color: var(--white);
+}
+
+/* Le logo reste magenta, la couleur de la marque (les logos ne sont pas soumis aux
+   exigences de contraste du WCAG). */
+
+[data-theme="dark"] .hero {
+  color: var(--white);
+}
+
+[data-theme="dark"] .hero .eyebrow,
+[data-theme="dark"] .promises li {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+}
+
+[data-theme="dark"] .hero h1,
+[data-theme="dark"] .tagline-accent {
+  color: var(--magenta-bright);
+}
+
+[data-theme="dark"] .hero-description {
+  color: var(--muted);
+}
+
+[data-theme="dark"] .promises li::before {
+  border-color: var(--magenta-bright);
+}
+
+[data-theme="dark"] .button-ghost {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+[data-theme="dark"] .button-ghost:hover {
+  background: var(--white);
+  color: var(--deepnight);
+}
+
+[data-theme="dark"] .hero-visual img {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* Un seul fond pour toute la page : plus de vagues ni de sections teintées. */
+[data-theme="dark"] .hero,
+[data-theme="dark"] .section-tinted,
+[data-theme="dark"] .site-footer {
+  background: transparent;
+}
+
+[data-theme="dark"] .wave {
+  display: none;
+}
+
+[data-theme="dark"] .eyebrow {
+  color: #ff8fc4;
+}
+
+[data-theme="dark"] .stat-number,
+[data-theme="dark"] .facts dt {
+  color: var(--magenta-bright);
+}
+
+[data-theme="dark"] .section-lead-dark,
+[data-theme="dark"] .feature-text p:not(.feature-step),
+[data-theme="dark"] .member-role,
+[data-theme="dark"] .principles p,
+[data-theme="dark"] .stat-label,
+[data-theme="dark"] .stats-source,
+[data-theme="dark"] .story figcaption,
+[data-theme="dark"] .team-shared,
+[data-theme="dark"] .footer-note {
+  color: var(--muted);
+}
+
+[data-theme="dark"] .member-role strong,
+[data-theme="dark"] .story figcaption strong {
+  color: var(--white);
+}
+
+[data-theme="dark"] .button-outline {
+  border-color: #ff8fc4;
+  color: #ff8fc4;
+}
+
+[data-theme="dark"] .button-outline:hover {
+  background: #ff8fc4;
+  color: var(--deepnight);
+}
+
+/* Les cartes deviennent du verre translucide. */
+[data-theme="dark"] .principles-list li,
+[data-theme="dark"] .stat,
+[data-theme="dark"] .story,
+[data-theme="dark"] .facts div,
+[data-theme="dark"] .member,
+[data-theme="dark"] .member-links a {
+  background: var(--card);
+  border-color: var(--line);
+  box-shadow: none;
+  color: var(--white);
+}
+
+[data-theme="dark"] .principles-list li {
+  border-top-width: 4px;
+}
+
+[data-theme="dark"] .principles-list li.accent-magenta {
+  border-top-color: var(--magenta);
+}
+
+[data-theme="dark"] .principles-list li.accent-turquoise {
+  border-top-color: var(--turquoise);
+}
+
+[data-theme="dark"] .principles-list li.accent-gold {
+  border-top-color: var(--gold);
+}
+
+[data-theme="dark"] .browser {
+  border-color: var(--line);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .demo-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+}
+
+[data-theme="dark"] .project-photo,
+[data-theme="dark"] img.avatar {
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] .site-footer {
+  border-top: 1px solid var(--line);
+  color: var(--white);
+}
+
+[data-theme="dark"] .footer-links a {
+  color: var(--white);
+}
+
+[data-theme="dark"] :focus-visible {
+  outline-color: var(--white);
+}
+
+[data-theme="dark"] .skip-link {
+  background: var(--white);
+  color: var(--deepnight);
+}
