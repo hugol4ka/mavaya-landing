@@ -17,20 +17,18 @@
     />
     <link rel="stylesheet" href="style.css" />
     <script>
-      // Le thème est choisi avant le premier affichage, sinon la page clignoterait en clair
-      // avant de passer en sombre. Le choix de la personne d'abord, sinon celui du système.
+      // Le thème est posé avant le premier affichage, sinon la page clignoterait en clair
+      // avant de passer en sombre. Clair par défaut ; sombre seulement si la personne l'a
+      // choisi avec le bouton lors d'une visite précédente.
       (() => {
         let saved = null;
         try {
           saved = localStorage.getItem("theme");
         } catch {
-          // Stockage bloqué (navigation privée) : on suit le système.
+          // Stockage bloqué (navigation privée) : la page reste en clair.
         }
-        const dark =
-          saved === "dark" ||
-          (saved === null &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches);
-        document.documentElement.dataset.theme = dark ? "dark" : "light";
+        document.documentElement.dataset.theme =
+          saved === "dark" ? "dark" : "light";
       })();
     </script>
   </head>
