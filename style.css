@@ -750,10 +750,20 @@ a {
   outline-color: var(--white);
 }
 
+/* Le lien « Démo » du menu amène le haut du panneau juste sous l'en-tête, et non le haut
+   de la section : sa marge haute laissait une bande vide et poussait la vidéo hors de l'écran. */
+.section-demo {
+  scroll-margin-top: -5.5rem;
+}
+
 @media (max-width: 760px) {
   .demo-panel {
     padding: 3rem 1.25rem;
     border-radius: 28px;
+  }
+
+  .section-demo {
+    scroll-margin-top: -3.5rem;
   }
 }
 
